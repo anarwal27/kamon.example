@@ -63,3 +63,11 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/intellij
+/kamon-example.iml
+/.idea/
+/target/
+.idea/
+kamon-example.iml
+pom.xml
+src/
+target/
