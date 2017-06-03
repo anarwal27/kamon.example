@@ -68,6 +68,4 @@ fabric.properties
 /target/
 .idea/
 kamon-example.iml
-pom.xml
-src/
 target/
