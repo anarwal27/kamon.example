@@ -1,0 +1,29 @@
+version: '2'
+services:
+
+#Install latest influxdb docker image from docker-hub: https://hub.docker.com/_/influxdb/
+  influxdb:
+    container_name: influxdb
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+      - "8083:8083"
+      - "8090:8090"
+      - "8099:8099"
+    environment:
+      INFLUXDB_ADMIN_ENABLED: "true"
+      INFLUXDB_DATA_ENGINE: tsm1
+
+#Install latest grafana docker image from docker hub: https://hub.docker.com/r/grafana/grafana/
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: "root"
+      GF_SECURITY_ADMIN_PASSWORD: "password"
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
