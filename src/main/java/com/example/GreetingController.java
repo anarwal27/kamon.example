@@ -11,16 +11,16 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 @EnableKamon
 public class GreetingController {
-        private static final String template = "Hello, %s!";
-        private final AtomicLong counter = new AtomicLong();
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
 
-        @RequestMapping("/greeting")
-        @Trace("GreetingTrace")
-        @Histogram(name="GreetingHistogram")
-        @Count(name = "greetingCounter")
-        @MinMaxCount(name="GreetingMinMaxCount")
-        public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-            return new Greeting(counter.incrementAndGet(),
-                    String.format(template, name));
-        }
+    @RequestMapping("/greeting")
+    @Trace("GreetingTrace")
+    @Histogram(name = "GreetingHistogram")
+    @Count(name = "greetingCounter")
+    @MinMaxCount(name = "GreetingMinMaxCount")
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Greeting(counter.incrementAndGet(),
+                String.format(template, name));
+    }
 }
